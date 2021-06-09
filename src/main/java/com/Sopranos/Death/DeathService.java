@@ -19,4 +19,20 @@ public class DeathService {
     .forEach(deaths::add);
     return deaths;
   }
+
+  public Death getDeath(int id){
+    return deathRepository.findById(String.valueOf(id)).get();
+  }
+
+  public void addDeath(Death death){  
+    deathRepository.save(death);
+  }
+
+  public void updateDeath(int id, Death death){  
+    deathRepository.save(death);
+  }
+
+  public void deleteDeath(int id){
+    deathRepository.deleteById(String.valueOf(id));
+  }
 }
