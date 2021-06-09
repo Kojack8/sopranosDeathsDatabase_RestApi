@@ -21,7 +21,7 @@ public class DeathService {
   }
 
   public Death getDeath(int id){
-    return deathRepository.findById(String.valueOf(id)).get();
+    return deathRepository.findById(id).get();
   }
 
   public void addDeath(Death death){  

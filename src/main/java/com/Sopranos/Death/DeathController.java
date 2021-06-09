@@ -25,6 +25,12 @@ public class DeathController {
     return deathService.getAllDeaths();
   }
 
+  @RequestMapping("/deaths/{id}")
+  // the path variable annotation tells spring to use the id argument
+  public Death getDeath(@PathVariable int id){
+    return deathService.getDeath(id);
+  }
+
   @RequestMapping(method=RequestMethod.POST, value= "/deaths")
   public void addDeath(@RequestBody Death death){
     deathService.addDeath(death);
