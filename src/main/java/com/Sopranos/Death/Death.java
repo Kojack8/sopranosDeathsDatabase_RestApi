@@ -18,6 +18,8 @@ public class Death {
   @Column(nullable = false)
   private String lastName;
   @Column(nullable = false)
+  private String nickName;
+  @Column(nullable = false)
   private String description;
   @Column(nullable = false)
   private String season;
@@ -28,11 +30,12 @@ public class Death {
 
   }
 
-  public Death(int id, String firstName, String lastName, String description, String season, String episode){
+  public Death(int id, String firstName, String lastName, String nickName, String description, String season, String episode){
     super();
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.nickName = nickName;
     this.description = description;
     this.season = season;
     this.episode = episode;
@@ -60,6 +63,14 @@ public class Death {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public String getNickName(){
+    return nickName;
+  }
+
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
   }
 
   public String getDescription(){

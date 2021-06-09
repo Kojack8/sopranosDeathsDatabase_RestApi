@@ -28,21 +28,37 @@ public class DeathController {
     return deathService.getAllDeaths();
   }
   
-  // THIS IS WHERE YOU LEFT OFF. THE BENEATH COMMENTED METHOD IS THE 
-  // THE OLD SYSTEM FOR A SIMPLE GET. NOW YOU'RE TRYING TO USE PARAMS
-  // http://localhost:8080/death?season=2&episode=213 returns "test" as expected
   @RequestMapping(value = "/death", method = RequestMethod.GET)
   public List<Death> getDeaths(
-    @RequestParam(required=false,name="season") String season){
-      return deathService.getDeaths(season);
+    @RequestParam(required=false,name="firstName") String firstName,
+    @RequestParam(required=false,name="lastName") String lastName,
+    @RequestParam(required=false,name="nickName") String nickName,
+    @RequestParam(required=false,name="season") String season,
+    @RequestParam(required=false,name="episode") String episode){
+      // single gets are done. need to make all the multiple variable parameter functions
+      if (episode == null && firstName == null && lastName == null && nickName == null){
+        return deathService.getDeathsBySeason(season);
+      } else if (season == null && firstName == null && lastName == null && nickName == null){
+        return deathService.getDeathsByEpisode(episode);
+      } else if (season == null && episode == null && lastName == null && nickName == null){
+        return deathService.getDeathsByFirstName(firstName);
+      } else if (season == null && episode == null && lastName == null && firstName == null){
+        return deathService.getDeathsByNickName(nickName);
+      } else if (season == null && episode == null && firstName == null && nickName == null){
+        return deathService.getDeathsByLastName(lastName);
+      }
+
+      // this is just a placeholder for the required return statement
+      return deathService.getDeathsBySeason(season);
+      
   }
 
-  /*
+  
   @RequestMapping("/deaths/{id}")
   // the path variable annotation tells spring to use the id argument
   public Death getDeath(@PathVariable int id){
     return deathService.getDeath(id);
-  } */
+  } 
 
   @RequestMapping(method=RequestMethod.POST, value= "/deaths")
   public void addDeath(@RequestBody Death death){
