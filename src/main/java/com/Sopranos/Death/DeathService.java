@@ -33,6 +33,7 @@ public class DeathService {
   }
 
   public void deleteDeath(int id){
-    deathRepository.deleteById(String.valueOf(id));
+    deathRepository.deleteById(id);
   }
+
 }

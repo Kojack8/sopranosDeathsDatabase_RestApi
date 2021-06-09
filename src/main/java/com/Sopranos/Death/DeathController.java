@@ -1,10 +1,13 @@
 package com.Sopranos.Death;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,12 +27,23 @@ public class DeathController {
   public List<Death> getAllDeaths(){
     return deathService.getAllDeaths();
   }
+  
+  // THIS IS WHERE YOU LEFT OFF. THE BENEATH COMMENTED METHOD IS THE 
+  // THE OLD SYSTEM FOR A SIMPLE GET. NOW YOU'RE TRYING TO USE PARAMS
+  // http://localhost:8080/death?season=2&episode=213 returns "test" as expected
+  @RequestMapping(value = "/death", method = RequestMethod.GET)
+  public ResponseEntity<String> getResponse(
+    @RequestParam("season") String season,
+    @RequestParam("episode") String episode){
+      return new ResponseEntity<String>("test", HttpStatus.OK);
+  }
 
+  /*
   @RequestMapping("/deaths/{id}")
   // the path variable annotation tells spring to use the id argument
   public Death getDeath(@PathVariable int id){
     return deathService.getDeath(id);
-  }
+  } */
 
   @RequestMapping(method=RequestMethod.POST, value= "/deaths")
   public void addDeath(@RequestBody Death death){
