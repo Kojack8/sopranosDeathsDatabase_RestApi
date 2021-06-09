@@ -32,10 +32,9 @@ public class DeathController {
   // THE OLD SYSTEM FOR A SIMPLE GET. NOW YOU'RE TRYING TO USE PARAMS
   // http://localhost:8080/death?season=2&episode=213 returns "test" as expected
   @RequestMapping(value = "/death", method = RequestMethod.GET)
-  public ResponseEntity<String> getResponse(
-    @RequestParam("season") String season,
-    @RequestParam("episode") String episode){
-      return new ResponseEntity<String>("test", HttpStatus.OK);
+  public List<Death> getDeaths(
+    @RequestParam(required=false,name="season") String season){
+      return deathService.getDeaths(season);
   }
 
   /*

@@ -20,6 +20,17 @@ public class DeathService {
     return deaths;
   }
 
+  public List<Death> getDeaths(String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathBySeason(season));
+    //rrayList<Foo> newList = srcCollection.stream().collect(toCollection(ArrayList::new));
+
+    //deathRepository.findDeathBySeason(season)
+    
+    return deaths;
+  
+
+  }
+
   public Death getDeath(int id){
     return deathRepository.findById(id).get();
   }
