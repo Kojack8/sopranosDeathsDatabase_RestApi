@@ -95,6 +95,36 @@ public class DeathService {
     return deaths; 
   } 
 
+  public List<Death> getDeathsByFirstLastNick(String firstName, String lastName, String nickName){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstLastNick(firstName, lastName, nickName));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByFirstLastSeason(String firstName, String lastName, String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstLastSeason(firstName, lastName, season));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByFirstLastEpisode(String firstName, String lastName, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstLastEpisode(firstName, lastName, episode));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByLastNickSeason(String lastName, String nickName, String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByLastNickSeason(lastName, nickName, season));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByLastNickEpisode(String lastName, String nickName, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByLastNickEpisode(lastName, nickName, episode));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByNickSeasonEpisode(String nickName, String season, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByNickSeasonEpisode(nickName, season, episode));
+    return deaths; 
+  } 
+
 
   public Death getDeath(int id){
     return deathRepository.findById(id).get();

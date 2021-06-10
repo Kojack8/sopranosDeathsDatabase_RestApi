@@ -59,8 +59,38 @@ public interface DeathRepository extends CrudRepository<Death, Integer> {
     Collection<Death> findDeathByNickAndEpisode(@Param("nickName") String nickName, 
     @Param("episode") String episode);
 
+    
   @Query("SELECT u FROM Death u WHERE u.season = :season and u.episode = :episode")
     Collection<Death> findDeathBySeasonAndEpisode(@Param("season") String season, 
     @Param("episode") String episode);
   
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.nickName = :nickName")
+    Collection<Death> findDeathByFirstLastNick(@Param("firstName") String firstName, 
+    @Param("lastName") String lastName,
+    @Param("nickName") String nickName);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.season = :season")
+    Collection<Death> findDeathByFirstLastSeason(@Param("firstName") String firstName, 
+    @Param("lastName") String lastName,
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.episode = :episode")
+    Collection<Death> findDeathByFirstLastEpisode(@Param("firstName") String firstName, 
+    @Param("lastName") String lastName,
+    @Param("episode") String episode);
+
+  @Query("SELECT u FROM Death u WHERE u.lastName = :lastName and u.nickName = :nickName and u.season = :season")
+    Collection<Death> findDeathByLastNickSeason(@Param("lastName") String lastName, 
+    @Param("nickName") String nickName,
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.lastName = :lastName and u.nickName = :nickName and u.episode = :episode")
+    Collection<Death> findDeathByLastNickEpisode(@Param("lastName") String lastName, 
+    @Param("nickName") String nickName,
+    @Param("episode") String episode);
+
+  @Query("SELECT u FROM Death u WHERE u.nickName = :nickName and u.season = :season and u.episode = :episode")
+    Collection<Death> findDeathByNickSeasonEpisode(@Param("nickName") String nickName, 
+    @Param("season") String season,
+    @Param("episode") String episode);
 }

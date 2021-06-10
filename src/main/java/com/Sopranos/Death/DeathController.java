@@ -66,6 +66,18 @@ public class DeathController {
         return deathService.getDeathsByNickandEpisode(nickName, episode);
       } else if (firstName == null && lastName == null && nickName == null){
         return deathService.getDeathsBySeasonandEpisode(season, episode);
+      } else if (season == null && episode == null){
+        return deathService.getDeathsByFirstLastNick(firstName, lastName, nickName);
+      } else if (nickName == null && episode == null){
+        return deathService.getDeathsByFirstLastSeason(firstName, lastName, season);
+      } else if (nickName == null && season == null){
+        return deathService.getDeathsByFirstLastEpisode(firstName, lastName, episode);
+      } else if (firstName == null && episode == null){
+        return deathService.getDeathsByLastNickSeason(lastName, nickName, season);
+      } else if (firstName == null && episode == null){
+        return deathService.getDeathsByLastNickEpisode(lastName, nickName, episode);
+      } else if (firstName == null && lastName == null){
+        return deathService.getDeathsByNickSeasonEpisode(nickName, season, episode);
       }
       // this is just a placeholder for the required return statement
       return deathService.getDeathsBySeason(season);
