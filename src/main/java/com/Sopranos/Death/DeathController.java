@@ -35,7 +35,6 @@ public class DeathController {
     @RequestParam(required=false,name="nickName") String nickName,
     @RequestParam(required=false,name="season") String season,
     @RequestParam(required=false,name="episode") String episode){
-      // three params gets are done. just need 4
       if (episode == null && firstName == null && lastName == null && nickName == null){
         return deathService.getDeathsBySeason(season);
       } else if (season == null && firstName == null && lastName == null && nickName == null){
@@ -72,15 +71,33 @@ public class DeathController {
         return deathService.getDeathsByFirstLastSeason(firstName, lastName, season);
       } else if (nickName == null && season == null){
         return deathService.getDeathsByFirstLastEpisode(firstName, lastName, episode);
+      } else if (lastName == null && episode == null){
+        return deathService.getDeathsByFirstNickSeason(firstName, nickName, season);
+      } else if (lastName == null && season == null){
+        return deathService.getDeathsByFirstNickEpisode(firstName, nickName, episode);
+      } else if (nickName == null && lastName == null){
+        return deathService.getDeathsByFirstSeasonEpisode(firstName, season, episode);
       } else if (firstName == null && episode == null){
         return deathService.getDeathsByLastNickSeason(lastName, nickName, season);
-      } else if (firstName == null && episode == null){
+      } else if (firstName == null && season == null){
         return deathService.getDeathsByLastNickEpisode(lastName, nickName, episode);
+      } else if (nickName == null && firstName == null){
+        return deathService.getDeathsByLastSeasonEpisode(lastName, season, episode);
       } else if (firstName == null && lastName == null){
         return deathService.getDeathsByNickSeasonEpisode(nickName, season, episode);
+      } else if (episode == null){
+        return deathService.getDeathsByFLNS(firstName, lastName, nickName, season);
+      } else if (season == null){
+        return deathService.getDeathsByFLNE(firstName, lastName, nickName, episode);
+      } else if (nickName == null){
+        return deathService.getDeathsByFLES(firstName, lastName, episode, season);
+      } else if (lastName == null){
+        return deathService.getDeathsByFNES(firstName, nickName, episode, season);
+      } else if (firstName == null){
+        return deathService.getDeathsByLNES(lastName, nickName, episode, season);
       }
       // this is just a placeholder for the required return statement
-      return deathService.getDeathsBySeason(season);
+      return deathService.getDeathsByFLNSE(firstName, lastName, nickName, season, episode);
       
   }
 

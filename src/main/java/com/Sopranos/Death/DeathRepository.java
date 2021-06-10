@@ -17,7 +17,7 @@ public interface DeathRepository extends CrudRepository<Death, Integer> {
   @Query("SELECT u FROM Death u WHERE u.firstName = :firstName")
     Collection<Death> findDeathByFirstName(@Param("firstName") String firstName);
 
-    @Query("SELECT u FROM Death u WHERE u.lastName = :lastName")
+  @Query("SELECT u FROM Death u WHERE u.lastName = :lastName")
     Collection<Death> findDeathByLastName(@Param("lastName") String lastName);
 
   @Query("SELECT u FROM Death u WHERE u.nickName = :nickName")
@@ -59,7 +59,6 @@ public interface DeathRepository extends CrudRepository<Death, Integer> {
     Collection<Death> findDeathByNickAndEpisode(@Param("nickName") String nickName, 
     @Param("episode") String episode);
 
-    
   @Query("SELECT u FROM Death u WHERE u.season = :season and u.episode = :episode")
     Collection<Death> findDeathBySeasonAndEpisode(@Param("season") String season, 
     @Param("episode") String episode);
@@ -79,6 +78,21 @@ public interface DeathRepository extends CrudRepository<Death, Integer> {
     @Param("lastName") String lastName,
     @Param("episode") String episode);
 
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.nickName = :nickName and u.season = :season")
+    Collection<Death> findDeathByFirstNickSeason(@Param("firstName") String firstName, 
+    @Param("nickName") String nickName,
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.nickName = :nickName and u.episode = :episode")
+    Collection<Death> findDeathByFirstNickEpisode(@Param("firstName") String firstName, 
+    @Param("nickName") String nickName,
+    @Param("episode") String episode);
+
+  @Query("SELECT u FROM Death u WHERE u .firstName = :firstName and u.season = :season and u.episode = :episode")
+    Collection<Death> findDeathByFirstSeasonEpisode(@Param("firstName") String firstName, 
+    @Param("season") String season,
+    @Param("episode") String episode);
+
   @Query("SELECT u FROM Death u WHERE u.lastName = :lastName and u.nickName = :nickName and u.season = :season")
     Collection<Death> findDeathByLastNickSeason(@Param("lastName") String lastName, 
     @Param("nickName") String nickName,
@@ -89,8 +103,50 @@ public interface DeathRepository extends CrudRepository<Death, Integer> {
     @Param("nickName") String nickName,
     @Param("episode") String episode);
 
+  @Query("SELECT u FROM Death u WHERE u .lastName = :lastName and u.season = :season and u.episode = :episode")
+    Collection<Death> findDeathByLastSeasonEpisode(@Param("lastName") String lastName, 
+    @Param("season") String season,
+    @Param("episode") String episode);
+
   @Query("SELECT u FROM Death u WHERE u.nickName = :nickName and u.season = :season and u.episode = :episode")
     Collection<Death> findDeathByNickSeasonEpisode(@Param("nickName") String nickName, 
+    @Param("season") String season,
+    @Param("episode") String episode);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.nickName = :nickName and u.season = :season")
+    Collection<Death> findDeathByFNLS(@Param("firstName") String firstName,
+    @Param("lastName") String lastName,
+    @Param("nickName") String nickName, 
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.nickName = :nickName and u.episode = :episode")
+    Collection<Death> findDeathByFNLE(@Param("firstName") String firstName,
+    @Param("lastName") String lastName,
+    @Param("nickName") String nickName, 
+    @Param("episode") String episode);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.episode = :episode and u.season = :season")
+    Collection<Death> findDeathByFLES(@Param("firstName") String firstName,
+    @Param("lastName") String lastName,
+    @Param("episode") String episode, 
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.nickName = :nickName and u.episode = :episode and u.season = :season")
+    Collection<Death> findDeathByFNES(@Param("firstName") String firstName,
+    @Param("nickName") String nickName, 
+    @Param("episode") String episode,
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.lastName = :lastName and u.nickName = :nickName and u.episode = :episode and u.season = :season")
+    Collection<Death> findDeathByLNES(@Param("lastName") String lastName,
+    @Param("nickName") String nickName, 
+    @Param("episode") String episode,
+    @Param("season") String season);
+
+  @Query("SELECT u FROM Death u WHERE u.firstName = :firstName and u.lastName = :lastName and u.nickName = :nickName and u.season = :season and u.episode = :episode")
+    Collection<Death> findDeathByFNLSE(@Param("firstName") String firstName,
+    @Param("lastName") String lastName,
+    @Param("nickName") String nickName, 
     @Param("season") String season,
     @Param("episode") String episode);
 }
