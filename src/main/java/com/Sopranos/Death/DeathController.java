@@ -35,7 +35,7 @@ public class DeathController {
     @RequestParam(required=false,name="nickName") String nickName,
     @RequestParam(required=false,name="season") String season,
     @RequestParam(required=false,name="episode") String episode){
-      // single gets are done. need to make all the multiple variable parameter functions
+      // three params gets are done. just need 4
       if (episode == null && firstName == null && lastName == null && nickName == null){
         return deathService.getDeathsBySeason(season);
       } else if (season == null && firstName == null && lastName == null && nickName == null){
