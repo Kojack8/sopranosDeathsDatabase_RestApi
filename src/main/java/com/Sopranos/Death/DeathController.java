@@ -46,8 +46,27 @@ public class DeathController {
         return deathService.getDeathsByNickName(nickName);
       } else if (season == null && episode == null && firstName == null && nickName == null){
         return deathService.getDeathsByLastName(lastName);
+      } else if (nickName == null && season == null && episode == null){
+        return deathService.getDeathsByFirstandLast(firstName, lastName);
+      } else if (lastName == null && season == null && episode == null){
+        return deathService.getDeathsByFirstandNick(firstName, nickName);
+      } else if (lastName == null && nickName == null && episode == null){
+        return deathService.getDeathsByFirstandSeason(firstName, season);
+      } else if (lastName == null && nickName == null && season == null){
+        return deathService.getDeathsByFirstandEpisode(firstName, episode);
+      } else if (season == null && episode == null && firstName == null){
+        return deathService.getDeathsByLastandNick(lastName, nickName);
+      } else if (nickName == null && episode == null && firstName == null){
+        return deathService.getDeathsByLastandSeason(lastName, season);
+      } else if (nickName == null && season == null && firstName == null){
+        return deathService.getDeathsByLastandEpisode(lastName, episode);
+      } else if (firstName == null && lastName == null && episode == null){
+        return deathService.getDeathsByNickandSeason(nickName, season);
+      } else if (firstName == null && lastName == null && season == null){
+        return deathService.getDeathsByNickandEpisode(nickName, episode);
+      } else if (firstName == null && lastName == null && nickName == null){
+        return deathService.getDeathsBySeasonandEpisode(season, episode);
       }
-
       // this is just a placeholder for the required return statement
       return deathService.getDeathsBySeason(season);
       

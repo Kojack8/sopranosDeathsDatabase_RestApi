@@ -45,7 +45,52 @@ public class DeathService {
     return deaths; 
   } 
 
-  public List<Death> getDeathsBySeasonAndEpisode(String season, String episode){
+  public List<Death> getDeathsByFirstandLast(String firstName, String lastName){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstAndLast(firstName, lastName));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByFirstandNick(String firstName, String nickName){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstAndNick(firstName, nickName));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByFirstandSeason(String firstName, String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstAndSeason(firstName, season));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByFirstandEpisode(String firstName, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByFirstAndEpisode(firstName, episode));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByLastandNick(String lastName, String nickName){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByLastAndNick(lastName, nickName));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByLastandSeason(String lastName, String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByLastAndSeason(lastName, season));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByLastandEpisode(String lastName, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByLastAndEpisode(lastName, episode));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByNickandSeason(String lastName, String season){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByNickAndSeason(lastName, season));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsByNickandEpisode(String lastName, String episode){
+    List<Death> deaths = new ArrayList<>(deathRepository.findDeathByNickAndEpisode(lastName, episode));
+    return deaths; 
+  } 
+
+  public List<Death> getDeathsBySeasonandEpisode(String season, String episode){
     List<Death> deaths = new ArrayList<>(deathRepository.findDeathBySeasonAndEpisode(season, episode));
     return deaths; 
   } 
